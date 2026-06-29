@@ -1,0 +1,13 @@
+{
+  "name": "utake-tech",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @utake/web dev",
+    "build": "pnpm --filter @utake/web build"
+  }
+}

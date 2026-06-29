@@ -1,0 +1,9 @@
+{
+  "name": "@utake/web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "dependencies": {
+    "@utake/design-system": "workspace:*"
+  }
+}

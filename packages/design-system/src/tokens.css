@@ -1,0 +1,15 @@
+/*
+ * UTAKE design system — canonical tokens (FUENTE ÚNICA).
+ * Code is the source of truth; synced to Claude Design via /design-sync.
+ *
+ * Responsive base lives here and is consumed via CSS — never re-hardcoded:
+ *   --bp-*           breakpoints
+ *   --fs-*           fluid font sizes (clamp)
+ *   --section-pad-y  fluid vertical section padding
+ *   --gutter         fluid horizontal gutter
+ *
+ * Tokens are added when the design system is built out.
+ */
+:root {
+  /* placeholder — tokens defined in a later step */
+}
