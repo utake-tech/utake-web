@@ -61,7 +61,7 @@ export const POST: APIRoute = async ({ request }) => {
   if (error) {
     console.error("Resend error:", error);
     return new Response(
-      JSON.stringify({ error: "No se pudo enviar el mensaje. Inténtalo de nuevo." }),
+      JSON.stringify({ error: "No se pudo enviar el mensajee. Inténtalo de nuevo." }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
