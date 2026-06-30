@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/Navbar.astro";
 import HeroSection from "../components/HeroSection.astro";
 import ProblemasSection from "../components/ProblemasSection.astro";
+import SolucionesSection from "../components/SolucionesSection.astro";
 import MetodologiaSection from "../components/MetodologiaSection.astro";
 import ServiciosSection from "../components/ServiciosSection.astro";
 import EquipoSection from "../components/EquipoSection.astro";
@@ -12,6 +13,7 @@ import Footer from "../components/Footer.astro";
 import {
   heroContent,
   problemasContent,
+  solucionesContent,
   metodologiaContent,
   serviciosContent,
   equipoContent,
@@ -25,6 +27,7 @@ import {
   <Navbar />
   <HeroSection content={heroContent} />
   <ProblemasSection content={problemasContent} />
+  <SolucionesSection content={solucionesContent} />
   <MetodologiaSection content={metodologiaContent} />
   <ServiciosSection content={serviciosContent} />
   <EquipoSection content={equipoContent} />

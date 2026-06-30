@@ -66,6 +66,48 @@ export const problemasContent: ProblemasContent = {
   ],
 };
 
+// ─── Soluciones ──────────────────────────────────────────────────────────────
+
+export interface Solucion {
+  icon: string;
+  title: string;
+  when: string;
+  deliver: string;
+}
+
+export interface SolucionesContent {
+  badge: string;
+  headline: string;
+  body: string;
+  items: Solucion[];
+}
+
+export const solucionesContent: SolucionesContent = {
+  badge: "Servicios",
+  headline: "¿Qué podemos construir para ti?",
+  body: "Desde el sistema desde cero hasta el mantenimiento de lo que ya tienes. Sin intermediarios, todo con ingenieros senior.",
+  items: [
+    {
+      icon: '<rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/>',
+      title: "Ingeniería de Software a Medida",
+      when: "Quieres construir un producto desde cero y necesitas que la arquitectura soporte crecimiento sin acumular deuda técnica.",
+      deliver: "Sistema diseñado con decisiones técnicas documentadas, arquitectura escalable y base de código lista para equipos y producción.",
+    },
+    {
+      icon: '<rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>',
+      title: "DevOps & CI/CD",
+      when: "Tu equipo entrega código pero los despliegues son manuales, lentos o propensos a errores humanos.",
+      deliver: "Pipelines de CI/CD con tests automáticos, observabilidad y rollback — infraestructura como código desde el día uno.",
+    },
+    {
+      icon: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+      title: "Mantenimiento & Evolución",
+      when: "Heredaste un sistema en producción y necesitas evolucionar funcionalidades sin romper lo que ya funciona.",
+      deliver: "Refactorización incremental, features nuevas con cobertura de tests y deuda técnica mapeada y priorizada.",
+    },
+  ],
+};
+
 // ─── Metodología ─────────────────────────────────────────────────────────────
 
 export interface MetodologiaContent {
@@ -169,7 +211,7 @@ export const equipoContent: EquipoContent = {
       name: "Herald Olivares",
       specialty: "Backend & Arquitectura",
       exp: "+12 años",
-      bio: "Senior Software Engineer y MSc en Ingeniería de Software (U. de los Andes). Backend y sistemas distribuidos escalables (Python, Django, AWS) con spec-driven development y workflows agénticos de IA.",
+      bio: "Senior Software Engineer y MSc en Ingeniería de Software (U. de los Andes). Backend y sistemas distribuidos escalables (Python, Django, AWS) con spec-driven development y workflows agénticos de IA. Experiencia trabajando con clientes en Estados Unidos.",
       photo: "/team/team-herald.jpeg",
       linkedin: "https://www.linkedin.com/in/herald-matias-olivares-zarsoza",
     },
@@ -177,7 +219,7 @@ export const equipoContent: EquipoContent = {
       name: "Joel Sulca",
       specialty: "Frontend & Microfrontends",
       exp: "+8 años",
-      bio: "Lead Engineer. Diseña arquitecturas de microfrontends y librerías core cross-team para banca, con ingeniería asistida por IA: specs, validación automatizada y CI/CD.",
+      bio: "Lead Engineer especializado en arquitecturas de microfrontends y librerías core cross-team para banca. Spec-driven development e ingeniería asistida por IA: validación automatizada, CI/CD y workflows agénticos integrados al ciclo de desarrollo.",
       photo: "/team/team-joel.jpeg",
       linkedin: "https://www.linkedin.com/in/joel-sulca-cordova",
     },
@@ -185,7 +227,7 @@ export const equipoContent: EquipoContent = {
       name: "Leonardo Aquino",
       specialty: "Liderazgo Técnico",
       exp: "+10 años",
-      bio: "Technical Leader con +10 años entregando software para sector público y privado. Lidera equipos frontend y alinea cada decisión técnica con producto y negocio (Lean UX, Cloud).",
+      bio: "Technical Leader con +10 años entregando software para sector público y privado. Lidera equipos frontend y alinea cada decisión técnica con producto y negocio. Gestiona roadmaps técnicos y coordina con stakeholders en proyectos de alto impacto.",
       photo: "/team/team-leonardo.jpeg",
       linkedin: "https://www.linkedin.com/in/leonardo-jose-aquino-carhuatocto-2a46a040",
     },
@@ -242,10 +284,10 @@ export interface ContactoContent {
 
 export const contactoContent: ContactoContent = {
   badge: "Contacto",
-  headline: "Hablemos de tu arquitectura.",
-  body: "Cuéntanos en qué estás trabajando. Esto no es un formulario de ventas — es el inicio de una conversación técnica.",
-  cta: "Solicitar diagnóstico técnico",
-  ctaNote: "Te responderemos con preguntas y posibles tradeoffs, no con una cotización genérica.",
+  headline: "Cuéntanos qué quieres construir.",
+  body: "Sin importar en qué etapa estás — idea nueva, sistema existente o equipo que necesita refuerzo — empezamos con una conversación.",
+  cta: "Conversemos",
+  ctaNote: "Te respondemos en menos de 24 h con preguntas reales, no con una cotización genérica.",
 };
 
 // ─── Footer ───────────────────────────────────────────────────────────────────

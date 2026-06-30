@@ -37,6 +37,8 @@ const { content } = Astro.props;
               class="form-input"
               placeholder="Tu nombre"
               required
+              minlength="2"
+              maxlength="100"
             />
           </div>
 
@@ -48,6 +50,7 @@ const { content } = Astro.props;
               name="empresa"
               class="form-input"
               placeholder="Nombre de tu empresa"
+              maxlength="100"
             />
           </div>
 
@@ -60,18 +63,21 @@ const { content } = Astro.props;
               class="form-input"
               placeholder="hola@empresa.com"
               required
+              maxlength="254"
             />
           </div>
 
           <div class="form-field">
-            <label for="reto" class="form-label">Reto técnico</label>
+            <label for="reto" class="form-label">¿En qué te podemos ayudar?</label>
             <textarea
               id="reto"
               name="reto"
               class="form-textarea"
               rows="4"
-              placeholder="¿Qué estás construyendo y dónde te está costando? Stack, escala, deuda técnica, plazos…"
+              placeholder="¿Qué quieres construir o en qué necesitas ayuda?"
               required
+              minlength="20"
+              maxlength="2000"
             ></textarea>
           </div>
 
@@ -287,6 +293,23 @@ const { content } = Astro.props;
       submitBtn.style.opacity = "0.7";
     }
     if (errorEl) errorEl.hidden = true;
+
+    const nombreVal = form.querySelector<HTMLInputElement>("#nombre")?.value.trim() ?? "";
+    const correoVal = form.querySelector<HTMLInputElement>("#correo")?.value.trim() ?? "";
+    const retoVal = form.querySelector<HTMLTextAreaElement>("#reto")?.value.trim() ?? "";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const validationError =
+      nombreVal.length < 2 ? "El nombre debe tener al menos 2 caracteres." :
+      !emailRegex.test(correoVal) ? "Ingresa un correo electrónico válido." :
+      retoVal.length < 20 ? "Cuéntanos un poco más — al menos 20 caracteres." :
+      null;
+
+    if (validationError) {
+      if (errorEl) { errorEl.textContent = validationError; errorEl.hidden = false; }
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ""; }
+      return;
+    }
 
     try {
       const res = await fetch("/api/contact", {
