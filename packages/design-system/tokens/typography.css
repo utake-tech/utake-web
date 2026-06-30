@@ -1,0 +1,53 @@
+/* UTAKE TECH — Typography tokens
+   Títulos: Poppins Bold · Subtítulos: Poppins SemiBold · Cuerpo: Inter Regular */
+
+:root {
+  /* Families */
+  --font-display: 'Poppins', system-ui, -apple-system, sans-serif; /* titles + subtitles */
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;   /* body, UI */
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Weights */
+  --fw-regular:  400; /* @kind font */
+  --fw-medium:   500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold:     700; /* @kind font */
+
+  /* Type scale (1.250 major-third) — FLUID & mobile-first.
+     The third clamp() value is the original fixed DESKTOP size = the ceiling
+     (MAX), left untouched. The first value is a sensible phone floor; the middle
+     term scales fluidly between them. Headings shrink on small screens so titles
+     never overflow; body roles stay fixed for consistent readability. */
+  --fs-display: clamp(2.5rem,  6vw + 1rem,    3.815rem); /* @kind other */
+  --fs-h1:      clamp(2.05rem, 5vw + 0.9rem,  3.052rem); /* @kind other */
+  --fs-h2:      clamp(1.75rem, 4vw + 0.85rem, 2.441rem); /* @kind other */
+  --fs-h3:      clamp(1.5rem,  3vw + 0.8rem,  1.953rem); /* @kind other */
+  --fs-h4:      clamp(1.3rem,  1.6vw + 0.95rem, 1.563rem); /* @kind other */
+  --fs-h5:      clamp(1.125rem, 0.5vw + 1.05rem, 1.25rem); /* @kind other */
+  --fs-lg:      1.125rem;  /* 18px — fixed body role */
+  --fs-base:    1rem;      /* 16px — body */
+  --fs-sm:      0.875rem;  /* 14px */
+  --fs-xs:      0.75rem;   /* 12px — labels */
+
+  /* Line heights */
+  --lh-tight:   1.1;   /* @kind other */
+  --lh-snug:    1.25;  /* @kind other */
+  --lh-normal:  1.5;   /* @kind other */
+  --lh-relaxed: 1.65;  /* @kind other */
+
+  /* Letter spacing */
+  --ls-tight:  -0.02em; /* @kind other */
+  --ls-normal: 0;       /* @kind other */
+  --ls-wide:   0.04em;  /* @kind other */
+  --ls-caps:   0.12em;  /* @kind other */ /* uppercase eyebrows / TECH lockup */
+}
+
+/* Convenience text roles — opt-in helper classes */
+.utk-display { font-family: var(--font-display); font-weight: var(--fw-bold); font-size: var(--fs-display); line-height: var(--lh-tight); letter-spacing: var(--ls-tight); color: var(--text-strong); }
+.utk-h1 { font-family: var(--font-display); font-weight: var(--fw-bold); font-size: var(--fs-h1); line-height: var(--lh-tight); letter-spacing: var(--ls-tight); color: var(--text-strong); }
+.utk-h2 { font-family: var(--font-display); font-weight: var(--fw-bold); font-size: var(--fs-h2); line-height: var(--lh-snug); letter-spacing: var(--ls-tight); color: var(--text-strong); }
+.utk-h3 { font-family: var(--font-display); font-weight: var(--fw-semibold); font-size: var(--fs-h3); line-height: var(--lh-snug); color: var(--text-strong); }
+.utk-h4 { font-family: var(--font-display); font-weight: var(--fw-semibold); font-size: var(--fs-h4); line-height: var(--lh-snug); color: var(--text-strong); }
+.utk-eyebrow { font-family: var(--font-display); font-weight: var(--fw-semibold); font-size: var(--fs-xs); letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--text-brand); }
+.utk-body { font-family: var(--font-body); font-weight: var(--fw-regular); font-size: var(--fs-base); line-height: var(--lh-relaxed); color: var(--text-body); }
+.utk-small { font-family: var(--font-body); font-size: var(--fs-sm); line-height: var(--lh-normal); color: var(--text-muted); }

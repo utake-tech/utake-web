@@ -1,0 +1,64 @@
+/* UTAKE TECH — Color tokens
+   Brand: AI-First boutique software consultancy.
+   Palette: tech purple, confidence blue, energy cyan, deep slate. */
+
+:root {
+  /* ---- Brand base palette ---- */
+  --utk-purple: #7C3AED;   /* Primary  — innovation, creativity, future */
+  --utk-blue:   #2563EB;   /* Secondary — confidence, professionalism  */
+  --utk-cyan:   #14B8A6;   /* Accent    — energy, growth, momentum     */
+
+  /* Tints / shades for states */
+  --utk-purple-600: #6D28D9;
+  --utk-purple-300: #C4B5FD;
+  --utk-purple-50:  #F3EEFE;
+  --utk-blue-700:   #1D4ED8;
+  --utk-blue-50:    #EFF4FE;
+  --utk-cyan-600:   #0D9488;
+  --utk-cyan-50:    #E6F8F5;
+
+  /* ---- Neutrals (slate ramp) ---- */
+  --utk-slate-900: #0F172A;  /* Dark neutral — dark surfaces, body on light */
+  --utk-slate-800: #1E293B;
+  --utk-slate-700: #334155;
+  --utk-slate-500: #64748B;
+  --utk-slate-400: #94A3B8;
+  --utk-slate-300: #CBD5E1;
+  --utk-slate-200: #E2E8F0;
+  --utk-slate-100: #F1F5F9;
+  --utk-slate-50:  #F8FAFC;  /* Light neutral — light surfaces */
+  --utk-white:     #FFFFFF;
+
+  /* ---- Signature gradient ---- */
+  --utk-gradient: linear-gradient(135deg, #7C3AED 0%, #2563EB 50%, #14B8A6 100%); /* @kind color */
+  --utk-gradient-2: linear-gradient(135deg, #7C3AED 0%, #14B8A6 100%); /* @kind color */ /* button gradient */
+  --utk-gradient-text: linear-gradient(120deg, #7C3AED 0%, #2563EB 55%, #14B8A6 100%); /* @kind color */
+
+  /* ---- Semantic surfaces ---- */
+  --surface-page:    var(--utk-slate-50);
+  --surface-card:    var(--utk-white);
+  --surface-dark:    var(--utk-slate-900);
+  --surface-dark-2:  var(--utk-slate-800);
+  --surface-muted:   var(--utk-slate-100);
+
+  /* ---- Semantic text ---- */
+  --text-strong:   var(--utk-slate-900);
+  --text-body:     var(--utk-slate-700);
+  --text-muted:    var(--utk-slate-500);
+  --text-on-dark:  var(--utk-slate-50);
+  --text-on-dark-muted: var(--utk-slate-400);
+  --text-inverse:  var(--utk-white);
+  --text-brand:    var(--utk-purple);
+
+  /* ---- Borders ---- */
+  --border-subtle: var(--utk-slate-200);
+  --border-default: var(--utk-slate-300);
+  --border-strong: var(--utk-slate-700);
+  --border-brand:  var(--utk-purple);
+
+  /* ---- Feedback ---- */
+  --color-success: #16A34A;
+  --color-warning: #F59E0B;
+  --color-danger:  #DC2626;
+  --color-info:    var(--utk-blue);
+}

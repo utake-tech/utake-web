@@ -1,0 +1,39 @@
+/* UTAKE TECH — Spacing & layout tokens (8px base grid) */
+
+:root {
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4  */
+  --space-2: 0.5rem;   /* 8  */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10: 8rem;    /* 128 */
+
+  /* Container widths */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1200px;
+
+  /* Breakpoints — aligned EXACTLY to the container widths above.
+     MOBILE-FIRST: the base styles (no media query) ARE the mobile state;
+     every breakpoint is a min-width upgrade layered on top. Desktop is the
+     enhancement, never the starting point.
+     Note: CSS does not allow var() inside @media(), so these tokens are the
+     single source of truth — any media query must repeat the same literal px. */
+  --bp-sm: 640px;   /* = --container-sm — large phone / small tablet */
+  --bp-md: 768px;   /* = --container-md — tablet */
+  --bp-lg: 1024px;  /* = --container-lg — laptop */
+  --bp-xl: 1200px;  /* = --container-xl — desktop */
+
+  /* Section rhythm — fluid & mobile-first.
+     Floor 40px on phones (96px is too much there); ceiling holds at
+     --space-9 (96px), reached around --bp-xl. --gutter (page inline padding)
+     scales 16 → 24px the same way. */
+  --section-pad-y: clamp(2.5rem, 8vw, 6rem);    /* 40px → 96px */
+  --gutter:        clamp(1rem, 3.5vw, 1.5rem); /* @kind spacing */
+}

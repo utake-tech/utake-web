@@ -3,7 +3,43 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="UTAKE TECH">
-  <main>
+  <main class="test-block">
     <h1>UTAKE TECH</h1>
+    <p class="subtitle">Design system tokens — prueba temporal</p>
+    <div class="swatch"></div>
   </main>
 </BaseLayout>
+
+<!-- TEMP: token smoke-test — eliminar antes del primer componente real -->
+<style>
+  .test-block {
+    padding: var(--section-pad-y) var(--gutter);
+    background: var(--surface-page);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: var(--fs-display);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-tight);
+    color: var(--text-strong);
+    margin: 0 0 var(--space-4);
+  }
+
+  .subtitle {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    color: var(--text-muted);
+    margin: 0 0 var(--space-6);
+  }
+
+  /* color de marca visible */
+  .swatch {
+    width: 120px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--utk-gradient-2);
+    box-shadow: var(--glow-purple);
+  }
+</style>
