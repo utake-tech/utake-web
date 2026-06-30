@@ -12,7 +12,7 @@ const { content } = Astro.props;
 <section id="problemas">
   <div class="container">
     <div class="section-header reveal">
-      <Badge variant="cyan">{content.badge}</Badge>
+      <Badge variant="gradient">{content.badge}</Badge>
       <h2 class="headline">{content.headline}</h2>
       <p class="body-text">{content.body}</p>
     </div>
@@ -46,7 +46,7 @@ const { content } = Astro.props;
 <style>
   section {
     background: var(--surface-dark);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .container {
@@ -106,7 +106,7 @@ const { content } = Astro.props;
     align-items: center;
     gap: 15px;
     padding: 18px 20px;
-    border-radius: 14px;
+    border-radius: 16px;
     background: rgba(255, 255, 255, 0.025);
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition:

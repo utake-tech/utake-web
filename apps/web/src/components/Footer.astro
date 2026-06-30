@@ -16,7 +16,7 @@ const logoIsotipoUrl = (await import("@utake/design-system/assets/logo-isotipo.p
       <div class="col-brand">
         <a href="/" class="logo-link" aria-label="UTAKE TECH inicio">
           <img src={logoIsotipoUrl} alt="UTAKE TECH" width="32" height="32" class="logo-img" />
-          <span class="wordmark">UTAKE TECH</span>
+          <span class="wordmark">UTAKE <span class="wordmark-tech">TECH</span></span>
         </a>
         <p class="tagline">{content.tagline}</p>
       </div>
@@ -100,6 +100,10 @@ const logoIsotipoUrl = (await import("@utake/design-system/assets/logo-isotipo.p
     font-size: 19px; /* brand-fixed: not tokenizable as fluid */
     letter-spacing: -0.01em;
     color: var(--utk-white);
+  }
+
+  .wordmark-tech {
+    color: var(--utk-cyan);
   }
 
   .tagline {
