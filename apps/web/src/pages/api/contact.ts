@@ -30,7 +30,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const { error } = await resend.emails.send({
     from: "UTAKE TECH <onboarding@resend.dev>",
-    to: ["joelsulca.c@gmail.com"],
+    to: ["utaketech@gmail.com"],
     replyTo: correo,
     subject: `Nuevo contacto: ${nombre}${empresa ? ` — ${empresa}` : ""}`,
     html: `
