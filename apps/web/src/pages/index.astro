@@ -1,45 +1,40 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ProblemasSection from "../components/ProblemasSection.astro";
+import MetodologiaSection from "../components/MetodologiaSection.astro";
+import ServiciosSection from "../components/ServiciosSection.astro";
+import EquipoSection from "../components/EquipoSection.astro";
+import EmpezarSection from "../components/EmpezarSection.astro";
+import ContactoSection from "../components/ContactoSection.astro";
+import Footer from "../components/Footer.astro";
+import {
+  heroContent,
+  problemasContent,
+  metodologiaContent,
+  serviciosContent,
+  equipoContent,
+  empezarContent,
+  contactoContent,
+  footerContent,
+} from "../lib/content/home";
 ---
 
-<BaseLayout title="UTAKE TECH">
-  <main class="test-block">
-    <h1>UTAKE TECH</h1>
-    <p class="subtitle">Design system tokens — prueba temporal</p>
-    <div class="swatch"></div>
-  </main>
+<BaseLayout title="UTAKE TECH — Ingeniería de software AI-First">
+  <Navbar />
+  <HeroSection content={heroContent} />
+  <ProblemasSection content={problemasContent} />
+  <MetodologiaSection content={metodologiaContent} />
+  <ServiciosSection content={serviciosContent} />
+  <EquipoSection content={equipoContent} />
+  <EmpezarSection content={empezarContent} />
+  <ContactoSection content={contactoContent} />
+  <Footer content={footerContent} />
 </BaseLayout>
 
-<!-- TEMP: token smoke-test — eliminar antes del primer componente real -->
-<style>
-  .test-block {
-    padding: var(--section-pad-y) var(--gutter);
-    background: var(--surface-page);
-  }
-
-  h1 {
-    font-family: var(--font-display);
-    font-size: var(--fs-display);
-    font-weight: var(--fw-bold);
-    line-height: var(--lh-tight);
-    letter-spacing: var(--ls-tight);
-    color: var(--text-strong);
-    margin: 0 0 var(--space-4);
-  }
-
-  .subtitle {
-    font-family: var(--font-body);
-    font-size: var(--fs-base);
-    color: var(--text-muted);
-    margin: 0 0 var(--space-6);
-  }
-
-  /* color de marca visible */
-  .swatch {
-    width: 120px;
-    height: 40px;
-    border-radius: var(--radius-md);
-    background: var(--utk-gradient-2);
-    box-shadow: var(--glow-purple);
+<style is:global>
+  body {
+    background: var(--surface-dark);
   }
 </style>

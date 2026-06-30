@@ -1,0 +1,52 @@
+---
+interface Props {
+  variant?: "gradient" | "cyan" | "purple";
+  class?: string;
+}
+
+const { variant = "gradient", class: className } = Astro.props;
+---
+
+<span class:list={["badge", `badge--${variant}`, className]}>
+  <slot />
+</span>
+
+<style>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  /* gradient — premium eyebrow on dark surfaces */
+  .badge--gradient {
+    background: linear-gradient(
+      135deg,
+      rgba(124, 58, 237, 0.18),
+      rgba(20, 184, 166, 0.18)
+    );
+    color: var(--utk-white);
+    border: 1px solid rgba(124, 58, 237, 0.35);
+  }
+
+  /* cyan — works on dark and light */
+  .badge--cyan {
+    background: rgba(20, 184, 166, 0.12);
+    color: var(--utk-cyan-600);
+    border: 1px solid rgba(20, 184, 166, 0.3);
+  }
+
+  /* purple — team specialties and section eyebrows */
+  .badge--purple {
+    background: rgba(124, 58, 237, 0.1);
+    color: var(--utk-purple);
+    border: 1px solid rgba(124, 58, 237, 0.22);
+  }
+</style>

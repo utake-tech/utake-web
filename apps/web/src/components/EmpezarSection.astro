@@ -1,0 +1,188 @@
+---
+import Badge from "./ui/Badge.astro";
+import type { EmpezarContent } from "../lib/content/home";
+
+interface Props {
+  content: EmpezarContent;
+}
+
+const { content } = Astro.props;
+
+const checkIcon =
+  '<polyline points="20 6 9 17 4 12"/>';
+---
+
+<section id="empezar">
+  <div class="container">
+    <div class="section-header reveal">
+      <Badge variant="purple">{content.badge}</Badge>
+      <h2 class="headline">{content.headline}</h2>
+      <p class="body-text">{content.body}</p>
+    </div>
+
+    <div class="steps-grid">
+      {
+        content.steps.map((step) => (
+          <div class="step-card reveal">
+            <span class="step-num">{step.num}</span>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="result-label">Resultado</p>
+            <ul class="result-list" role="list">
+              {step.results.map((result) => (
+                <li class="result-item">
+                  <span class="check-icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="13"
+                      height="13"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      set:html={checkIcon}
+                    />
+                  </span>
+                  {result}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background: var(--surface-page);
+    border-top: 1px solid var(--utk-slate-100);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--section-pad-y) var(--gutter);
+  }
+
+  .section-header {
+    max-width: 720px;
+    margin-bottom: var(--section-header-mb);
+  }
+
+  .headline {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-h2);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--ls-tight);
+    color: var(--utk-slate-900);
+    margin: var(--space-4) 0 0;
+    text-wrap: balance;
+  }
+
+  .body-text {
+    font-size: var(--fs-lg);
+    line-height: 1.6;
+    color: var(--utk-slate-500);
+    margin: 14px 0 0;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .step-card {
+    padding: 32px 28px;
+    border-radius: 16px;
+    background: var(--utk-white);
+    border: 1px solid var(--utk-slate-200);
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 14px 36px rgba(15, 23, 42, 0.05);
+    transition:
+      border-color var(--dur-base) var(--ease-out),
+      box-shadow var(--dur-base) var(--ease-out),
+      transform var(--dur-base) var(--ease-out);
+  }
+
+  .step-card:hover {
+    border-color: rgba(124, 58, 237, 0.3);
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 22px 48px rgba(124, 58, 237, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: var(--utk-gradient-2);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    color: var(--utk-white);
+    margin-bottom: var(--space-4);
+    box-shadow: 0 10px 26px rgba(124, 58, 237, 0.3);
+  }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-weight: var(--fw-semibold);
+    font-size: 19px;
+    color: var(--utk-slate-900);
+    margin: 0 0 10px;
+    line-height: var(--lh-snug);
+  }
+
+  .result-label {
+    font-family: var(--font-display);
+    font-weight: var(--fw-semibold);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--utk-cyan-600);
+    margin: 18px 0 10px;
+  }
+
+  .result-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .result-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--fs-sm);
+    color: var(--utk-slate-700);
+    font-weight: var(--fw-medium);
+  }
+
+  .check-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    color: var(--utk-purple);
+  }
+</style>

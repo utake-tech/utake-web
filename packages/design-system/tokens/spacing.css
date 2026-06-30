@@ -34,6 +34,7 @@
      Floor 40px on phones (96px is too much there); ceiling holds at
      --space-9 (96px), reached around --bp-xl. --gutter (page inline padding)
      scales 16 → 24px the same way. */
-  --section-pad-y: clamp(2.5rem, 8vw, 6rem);    /* 40px → 96px */
-  --gutter:        clamp(1rem, 3.5vw, 1.5rem); /* @kind spacing */
+  --section-pad-y:    clamp(2.5rem, 8vw, 6rem);   /* 40px → 96px */
+  --gutter:           clamp(1rem, 3.5vw, 1.5rem); /* @kind spacing */
+  --section-header-mb: clamp(2rem, 5vw, 3.5rem);  /* 32px → 56px, space between section header and content grid */
 }

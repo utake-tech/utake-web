@@ -1,0 +1,190 @@
+---
+import Badge from "./ui/Badge.astro";
+import Button from "./ui/Button.astro";
+import type { HeroContent } from "../lib/content/home";
+import heroBackgroundUrl from "@utake/design-system/assets/hero-background.png?url";
+
+interface Props {
+  content: HeroContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="hero" style={`background-image: url('${heroBackgroundUrl}')`}>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-container">
+    <div class="hero-content hero-anim">
+      <Badge variant="gradient">{content.badge}</Badge>
+
+      <h1 class="hero-headline">
+        {content.headline}
+        {" "}<span class="hero-gradient">{content.headlineGradient}</span>.
+      </h1>
+
+      <p class="hero-body" set:html={content.body} />
+
+      <div class="hero-actions">
+        <Button href="#contacto" variant="primary" size="lg">
+          {content.cta.primary}
+        </Button>
+        <Button href="#servicios" variant="tertiary" size="lg">
+          {content.cta.secondary}
+        </Button>
+      </div>
+
+      <div class="hero-stats">
+        {
+          content.stats.map((stat) => (
+            <div class="hero-stat">
+              <div class:list={["stat-value", { "stat-gradient": stat.gradient }]}>
+                {stat.value}
+              </div>
+              <div class="stat-label">
+                {stat.label[0]}
+                <br />
+                {stat.label[1]}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Section wrapper — dark bg + hero background image */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--surface-dark);
+    background-position: center right;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  /* Directional scrim: full dark on left, fades right */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      var(--surface-dark) 32%,
+      rgba(15, 23, 42, 0.62) 70%,
+      rgba(15, 23, 42, 0.25) 100%
+    );
+  }
+
+  /* Container */
+  .hero-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* inline clamp: hero padding has no token equivalent —
+       larger than section-pad-y (40→96px), specific to the full-bleed hero */
+    padding: clamp(6rem, 14vw, 8rem) var(--gutter) clamp(6.5rem, 14vw, 8.25rem);
+  }
+
+  /* Content column */
+  .hero-content {
+    max-width: 720px;
+  }
+
+  /* Headline */
+  .hero-headline {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-display);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-tight);
+    color: var(--utk-white);
+    margin: var(--space-5) 0 0;
+    text-wrap: balance;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(120deg, var(--utk-purple), var(--utk-blue) 52%, var(--utk-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Body paragraph */
+  .hero-body {
+    font-size: var(--fs-lg);
+    line-height: var(--lh-relaxed);
+    color: var(--text-on-dark-muted);
+    margin: var(--space-5) 0 0;
+    max-width: 600px;
+  }
+
+  /* Emphasize text within hero body */
+  .hero-body :global(strong) {
+    color: var(--utk-slate-200);
+    font-weight: var(--fw-semibold);
+  }
+
+  /* CTA row */
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: var(--space-7);
+    flex-wrap: wrap;
+  }
+
+  /* Stats */
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    /* inline clamp: stats gap unique to hero composition; no DS token */
+    gap: clamp(1.5rem, 6vw, 3.25rem);
+    margin-top: var(--space-9);
+  }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: 2rem; /* 32px — hero display number, no fluid token at this scale */
+    color: var(--utk-white);
+    line-height: 1;
+  }
+
+  .stat-gradient {
+    background: linear-gradient(120deg, var(--utk-purple), var(--utk-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .stat-label {
+    font-size: var(--fs-sm);
+    color: var(--text-on-dark-muted);
+    margin-top: var(--space-1);
+    line-height: 1.4;
+  }
+
+  /* Load animation — staggered rise on hero children */
+  @keyframes utk-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-anim > * {
+      opacity: 0;
+      animation: utk-rise 0.72s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+    .hero-anim > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero-anim > *:nth-child(2) { animation-delay: 0.14s; }
+    .hero-anim > *:nth-child(3) { animation-delay: 0.23s; }
+    .hero-anim > *:nth-child(4) { animation-delay: 0.32s; }
+    .hero-anim > *:nth-child(5) { animation-delay: 0.41s; }
+  }
+</style>

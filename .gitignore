@@ -33,3 +33,10 @@ pnpm-debug.log*
 coverage/
 *.tsbuildinfo
 *.zip
+
+# Design sync — build output and machine state (durable files like config.json, NOTES.md are committed)
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules

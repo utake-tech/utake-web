@@ -1,0 +1,209 @@
+---
+import Badge from "./ui/Badge.astro";
+import type { ServiciosContent } from "../lib/content/home";
+
+interface Props {
+  content: ServiciosContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section id="servicios">
+  <div class="container">
+    <div class="section-header reveal">
+      <Badge variant="cyan">{content.badge}</Badge>
+      <h2 class="headline">{content.headline}</h2>
+      <p class="body-text">{content.body}</p>
+    </div>
+
+    <div class="services-grid">
+      {
+        content.items.map((service) => (
+          <div class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                set:html={service.icon}
+              />
+            </span>
+            <h3 class="service-title">{service.title}</h3>
+            <div class="service-meta">
+              <div class="meta-block">
+                <p class="meta-label">Para cuándo</p>
+                <p class="meta-text">{service.when}</p>
+              </div>
+              <div class="meta-divider" aria-hidden="true"></div>
+              <div class="meta-block">
+                <p class="meta-label meta-label--deliver">Qué entregamos</p>
+                <p class="meta-text">{service.deliver}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background: var(--surface-page);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--section-pad-y) var(--gutter);
+  }
+
+  .section-header {
+    max-width: 720px;
+    margin-bottom: var(--section-header-mb);
+  }
+
+  .headline {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-h2);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--ls-tight);
+    color: var(--utk-slate-900);
+    margin: var(--space-4) 0 0;
+    text-wrap: balance;
+  }
+
+  .body-text {
+    font-size: var(--fs-lg);
+    line-height: 1.6;
+    color: var(--utk-slate-500);
+    margin: 14px 0 0;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 640px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 28px;
+    border-radius: 16px;
+    background: var(--utk-white);
+    border: 1px solid var(--utk-slate-200);
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 14px 36px rgba(15, 23, 42, 0.05);
+    transition:
+      border-color var(--dur-base) var(--ease-out),
+      box-shadow var(--dur-base) var(--ease-out),
+      transform var(--dur-base) var(--ease-out);
+  }
+
+  .service-card:hover {
+    border-color: rgba(124, 58, 237, 0.3);
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 22px 48px rgba(124, 58, 237, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .service-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, var(--utk-purple), var(--utk-cyan));
+    color: var(--utk-white);
+    box-shadow: 0 10px 26px rgba(124, 58, 237, 0.34);
+    flex-shrink: 0;
+    margin-bottom: var(--space-4);
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  .service-card:hover .service-icon {
+    transform: scale(1.07) rotate(-3deg);
+  }
+
+  .service-title {
+    font-family: var(--font-display);
+    font-weight: var(--fw-semibold);
+    font-size: 19px;
+    color: var(--utk-slate-900);
+    margin: 0 0 var(--space-4);
+    line-height: var(--lh-snug);
+  }
+
+  .service-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  .meta-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .meta-label {
+    font-family: var(--font-display);
+    font-weight: var(--fw-semibold);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--utk-purple);
+    margin: 0;
+  }
+
+  .meta-label--deliver {
+    color: var(--utk-cyan-600);
+  }
+
+  .meta-text {
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+    color: var(--utk-slate-700);
+    margin: 0;
+  }
+
+  .meta-divider {
+    height: 1px;
+    background: var(--utk-slate-100);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .services-grid > .reveal:nth-child(3n + 2) {
+        animation-range: entry 0% cover 30%;
+      }
+      .services-grid > .reveal:nth-child(3n) {
+        animation-range: entry -4% cover 34%;
+      }
+    }
+  }
+</style>

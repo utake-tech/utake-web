@@ -1,0 +1,113 @@
+---
+interface Props {
+  variant?: "primary" | "secondary" | "tertiary";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  fullWidth?: boolean;
+  type?: "button" | "submit" | "reset";
+  class?: string;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  fullWidth = false,
+  type = "button",
+  class: className,
+} = Astro.props;
+
+const classes = ["btn", `btn--${variant}`, `btn--${size}`, fullWidth && "btn--full", className]
+  .filter(Boolean)
+  .join(" ");
+---
+
+{
+  href ? (
+    <a href={href} class={classes}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes}>
+      <slot />
+    </button>
+  )
+}
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-display);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      opacity var(--dur-base) var(--ease-out),
+      transform var(--dur-base) var(--ease-out),
+      box-shadow var(--dur-base) var(--ease-out);
+  }
+  .btn--full {
+    width: 100%;
+  }
+
+  /* sizes */
+  .btn--sm {
+    height: 36px;
+    padding: 0 var(--space-4);
+    font-size: var(--fs-sm);
+  }
+  .btn--md {
+    height: 44px;
+    padding: 0 var(--space-5);
+    font-size: var(--fs-base);
+  }
+  .btn--lg {
+    height: 52px;
+    padding: 0 var(--space-6);
+    font-size: var(--fs-lg);
+  }
+
+  /* primary — gradient brand */
+  .btn--primary {
+    background: var(--utk-gradient-2);
+    color: var(--utk-white);
+    box-shadow: var(--glow-purple);
+  }
+  .btn--primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(124, 58, 237, 0.45);
+  }
+  .btn--primary:active {
+    transform: none;
+    opacity: 1;
+  }
+
+  /* secondary — outlined purple */
+  .btn--secondary {
+    background: transparent;
+    color: var(--utk-purple);
+    border: var(--border-ui) solid var(--utk-purple);
+  }
+  .btn--secondary:hover {
+    background: var(--utk-purple-50);
+  }
+
+  /* tertiary — ghost on dark surfaces */
+  .btn--tertiary {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-on-dark);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+  }
+  .btn--tertiary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+</style>
