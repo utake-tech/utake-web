@@ -211,7 +211,7 @@ export const equipoContent: EquipoContent = {
       name: "Herald Olivares",
       specialty: "Backend & Arquitectura",
       exp: "+12 años",
-      bio: "Senior Software Engineer y MSc en Ingeniería de Software (U. de los Andes). Backend y sistemas distribuidos escalables (Python, Django, AWS) con spec-driven development y workflows agénticos de IA. Experiencia trabajando con clientes en Estados Unidos.",
+      bio: "Senior Software Engineer y MSc en Ingeniería de Software (U. de los Andes). Full-Stack, backend & architecture heavy, con spec-driven development y workflows agénticos de IA. Experiencia trabajando con clientes en Estados Unidos.",
       photo: "/team/team-herald.jpeg",
       linkedin: "https://www.linkedin.com/in/herald-matias-olivares-zarsoza",
     },
